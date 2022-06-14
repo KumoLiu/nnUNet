@@ -20,10 +20,13 @@ from time import sleep
 from typing import Tuple, List
 
 import matplotlib
-import nnunet
 import numpy as np
 import torch
 from batchgenerators.utilities.file_and_folder_operations import *
+from torch import nn
+from torch.optim import lr_scheduler
+
+import nnunet
 from nnunet.configuration import default_num_threads
 from nnunet.evaluation.evaluator import aggregate_scores
 from nnunet.inference.segmentation_export import save_segmentation_nifti_from_softmax
@@ -38,9 +41,6 @@ from nnunet.training.loss_functions.dice_loss import DC_and_CE_loss
 from nnunet.training.network_training.network_trainer import NetworkTrainer
 from nnunet.utilities.nd_softmax import softmax_helper
 from nnunet.utilities.tensor_utilities import sum_tensor
-from torch import nn
-from torch.optim import lr_scheduler
-
 
 matplotlib.use("agg")
 
