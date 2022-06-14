@@ -190,12 +190,14 @@ class NetworkTrainer(object):
         :return:
         """
         try:
-            font = {'weight': 'normal',
-                    'size': 18}
+            font = {
+                    'weight': 'normal',
+                    'size': 100}
 
             matplotlib.rc('font', **font)
+            matplotlib.rc('lines', lw=10)
 
-            fig = plt.figure(figsize=(30, 24))
+            fig = plt.figure(figsize=(70, 48))
             ax = fig.add_subplot(111)
             ax2 = ax.twinx()
 
@@ -209,10 +211,14 @@ class NetworkTrainer(object):
                 ax.plot(x_values, self.all_val_losses_tr_mode, color='g', ls='-', label="loss_val, train=True")
             if len(self.all_val_eval_metrics) == len(x_values):
                 ax2.plot(x_values, self.all_val_eval_metrics, color='g', ls='--', label="evaluation metric")
-
-            ax.set_xlabel("epoch")
-            ax.set_ylabel("loss")
-            ax2.set_ylabel("evaluation metric")
+            
+            ax.set_xlabel("epoch", fontsize=180,fontweight='bold')
+            ax.set_ylabel("loss", fontsize=180,fontweight='bold')
+            ax2.set_ylabel("evaluation metric", fontsize=180,fontweight='bold')
+            ax.spines['bottom'].set_linewidth(5)
+            ax.spines['left'].set_linewidth(5)
+            ax.spines['right'].set_linewidth(5)
+            ax.spines['top'].set_linewidth(5)
             ax.legend()
             ax2.legend(loc=9)
 
