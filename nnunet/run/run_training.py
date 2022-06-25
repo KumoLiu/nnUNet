@@ -27,6 +27,7 @@ from nnunet.utilities.task_name_id_conversion import convert_id_to_task_name
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--epochs", help="total epochs")
     parser.add_argument("network")
     parser.add_argument("network_trainer")
     parser.add_argument("task", help="can be task name or task id")
@@ -92,6 +93,7 @@ def main():
 
     args = parser.parse_args()
 
+    epochs = args.epochs
     task = args.task
     fold = args.fold
     network = args.network
@@ -151,7 +153,7 @@ def main():
     trainer = trainer_class(plans_file, fold, output_folder=output_folder_name, dataset_directory=dataset_directory,
                             batch_dice=batch_dice, stage=stage, unpack_data=decompress_data,
                             deterministic=deterministic,
-                            fp16=run_mixed_precision)
+                            fp16=run_mixed_precision, epochs=epochs)
     if args.disable_saving:
         trainer.save_final_checkpoint = False # whether or not to save the final checkpoint
         trainer.save_best_checkpoint = False  # whether or not to save the best checkpoint according to
