@@ -27,7 +27,7 @@ from nnunet.utilities.task_name_id_conversion import convert_id_to_task_name
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--epochs", help="total epochs")
+    parser.add_argument("--epochs", type=int, help="total epochs")
     parser.add_argument("network")
     parser.add_argument("network_trainer")
     parser.add_argument("task", help="can be task name or task id")
