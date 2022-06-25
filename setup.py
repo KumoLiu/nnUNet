@@ -23,7 +23,7 @@ setup(name='nnunet',
             "requests",
             "nibabel", 
             'tifffile',
-            "matplotlib"
+            "matplotlib==3.5.2"
       ],
       entry_points={
           'console_scripts': [
